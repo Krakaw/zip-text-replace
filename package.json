@@ -1,0 +1,19 @@
+{
+  "name": "@krakaw/zip-text-replace",
+  "version": "0.0.1",
+  "description": "Unzip a file, replace text within a specific file, re-zip the file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Krakaw/zip-text-replace.git"
+  },
+  "author": "Krakaw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Krakaw/zip-text-replace/issues"
+  },
+  "homepage": "https://github.com/Krakaw/zip-text-replace#readme"
+}
