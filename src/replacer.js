@@ -109,23 +109,23 @@ class Replacer {
 	}
 
 
+	/**
+	 *
+	 * @returns {Promise<null>}
+	 */
 	async replace() {
 		const zip = await this._loadZip();
 		let completed = await this._doReplacement();
-
-
-		let stream = this.zip
-			.generateNodeStream({type: 'nodebuffer', streamFiles: true});
-
 		if (this.options.output.writeFile) {
 			const outputName = this._getOutputName();
-
-			stream.pipe(fs.createWriteStream(outputName))
+			this.zip
+				.generateNodeStream({type: 'nodebuffer', streamFiles: true})
+				.pipe(fs.createWriteStream(outputName))
 				.on('finish', () => {
 					console.log(outputName);
 				});
 		}
-		return stream;
+		return this.zip;
 	}
 }
 
