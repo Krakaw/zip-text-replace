@@ -22,7 +22,6 @@ class Replacer {
 			}
 		};
 		this.options = {...defaults, ...options};
-		this.currentOutputPath = null;
 		this.zip = null;
 		this._checkRequirements();
 		this._sortReplacements();
