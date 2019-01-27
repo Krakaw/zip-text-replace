@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Krakaw/zip-text-replace/issues"
   },
-  "homepage": "https://github.com/Krakaw/zip-text-replace#readme"
+  "homepage": "https://github.com/Krakaw/zip-text-replace#readme",
+  "dependencies": {
+    "jszip": "^3.1.5"
+  }
 }
