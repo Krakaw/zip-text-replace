@@ -1,6 +1,6 @@
 {
   "name": "@krakaw/zip-text-replace",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Unzip a file, replace text within a specific file, re-zip the file",
   "main": "index.js",
   "scripts": {
