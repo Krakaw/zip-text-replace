@@ -23,7 +23,6 @@ let replaceDocx = new Replacer({
 	});
 	replaceDocx.replace();
 
-
 	let replacerXlsx = new Replacer({
 		input: {
 			path: "./test_input.xlsx"
