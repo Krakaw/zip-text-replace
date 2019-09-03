@@ -19,7 +19,8 @@ class Replacer {
 			replace: {
 				srcFiles: [],// Or *
 				replacements: []//{key: '', value: '', escapeKey: false, files: null}
-			}
+			},
+			defaultReplace: false//{key: '', value: '', escapeKey: false, files: null}
 		};
 		this.options = {...defaults, ...options};
 		this.zip = null;
@@ -90,14 +91,20 @@ class Replacer {
 				let fileContent = await this.zip.file(srcFile).async("string");
 				try {
 					//Loop through the replacement keys and replace the content
-					this.options.replace.replacements.forEach(item => {
+					this.options.replace.replacements.forEach(replacement => {
 						//TODO Implement replacement filters
 						// if (item.files) {
 						// 	let files = [].concat(item.files);
 						// }
-						let regex = item.escapeKey ? new RegExp(escapeRegExp(item.key), "g") : new RegExp(item.key, "g");
-						fileContent = fileContent.replace(regex, item.value);
+						let regex = replacement.escapeKey ? new RegExp(escapeRegExp(replacement.key), "g") : new RegExp(replacement.key, "g");
+						fileContent = fileContent.replace(regex, replacement.value);
 					});
+					//Now run the default replace if it exists.
+					if (this.options.defaultReplace) {
+						const replacement = this.options.defaultReplace;
+						let regex = replacement.escapeKey ? new RegExp(escapeRegExp(replacement.key), "g") : new RegExp(replacement.key, "g");
+						fileContent = fileContent.replace(regex, replacement.value);
+					}
 					//Re-add the file back into the zip
 					this.zip.file(srcFile, fileContent);
 				} catch (e) {
